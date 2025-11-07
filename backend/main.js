@@ -7,6 +7,10 @@ const path = require("path");
 const bcrypt = require('bcryptjs'); // for password encryption
 const User = require('./models/User'); // your User model
 
+const cors = require("cors");
+app.use(cors({ origin: "*" })); // or replace "*" with your frontend URL
+
+
 const app = express();
 mongoose.connect(process.env.MONGO_URI)
 // Middleware
@@ -15,7 +19,7 @@ app.use(express.json());
 app.use("/uploads", express.static("uploads")); // Serve uploaded images
 
 // Database connection
-mongoose.connect("mongodb://127.0.0.1:27017/cookistry", {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
