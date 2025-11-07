@@ -22,6 +22,6 @@ Client Secret: 4d1b7892bf024d11983b8d15a3cddd66
 git init
 git add .
 git commit -am "inital commit"
-git remote add origin your-repository-url.git
+git remote add origin https://github.com/Abina91/pd-final-cookistry.git
 checking(optional):git remote -v
 git push origin master
