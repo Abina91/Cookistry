@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -7,7 +8,7 @@ const bcrypt = require('bcryptjs'); // for password encryption
 const User = require('./models/User'); // your User model
 
 const app = express();
-
+mongoose.connect(process.env.MONGO_URI)
 // Middleware
 app.use(cors());
 app.use(express.json());
