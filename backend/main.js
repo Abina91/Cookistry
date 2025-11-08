@@ -6,6 +6,17 @@ const multer = require("multer");
 const path = require("path");
 const bcrypt = require('bcryptjs'); // for password encryption
 const User = require('./models/User'); // your User model
+const cloudinary = require("./utils/cloudinary");
+const fs = require("fs");
+
+const uploadsFolder = path.join(__dirname, "uploads");
+
+fs.readdirSync(uploadsFolder).forEach(file => {
+  cloudinary.uploader.upload(path.join(uploadsFolder, file), { folder: "cookistry" })
+    .then(result => console.log(result.secure_url))
+    .catch(err => console.error(err));
+});
+
 
 
 //app.use(cors({ origin: "*" }));  or replace "*" with your frontend URL
@@ -92,6 +103,10 @@ app.post("/recipe", upload.single("image"), async (req, res) => {
         console.error("Error saving recipe:", err);
         res.status(500).json({ error: "Failed to save recipe" });
     }
+});
+
+app.get("/", (req, res) => {
+  res.send("Cookistry backend is running!");
 });
 
 
