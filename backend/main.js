@@ -7,8 +7,8 @@ const path = require("path");
 const bcrypt = require('bcryptjs'); // for password encryption
 const User = require('./models/User'); // your User model
 
-const cors = require("cors");
-app.use(cors({ origin: "*" })); // or replace "*" with your frontend URL
+
+//app.use(cors({ origin: "*" }));  or replace "*" with your frontend URL
 
 
 const app = express();
